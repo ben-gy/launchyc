@@ -34,13 +34,23 @@ x-algolia-application-id
 
 `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/{index_name}?{default_params}`
 
-Example sorted by votes:
+#### Example sorted by votes:
 
 `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/Launches_production?x-algolia-agent=Algolia%20for%20JavaScript%20(4.11.0)%3B%20Browser%20(lite)&x-algolia-api-key=YjVhMWQ1OGEwZTBkNzc3MTk0NzJjODFjMDNjOTM3ODlmZGY0ODdmZTc2OGY3NGY0NGU3ZGIwYTk0ZDJlYWYyZHJlc3RyaWN0SW5kaWNlcz0lNUIlMjJMYXVuY2hlc19wcm9kdWN0aW9uJTIyJTJDJTIyTGF1bmNoZXNfYnlfZGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE&x-algolia-application-id=45BWZJ1SGC`
 
-Or sorted by date:
+**CURL**
+
+`curl --location --request GET 'https://45bwzj1sgc-dsn.algolia.net/1/indexes/Launches_production?x-algolia-agent=Algolia%20for%20JavaScript%20(4.11.0)%3B%20Browser%20(lite)&x-algolia-api-key=YjVhMWQ1OGEwZTBkNzc3MTk0NzJjODFjMDNjOTM3ODlmZGY0ODdmZTc2OGY3NGY0NGU3ZGIwYTk0ZDJlYWYyZHJlc3RyaWN0SW5kaWNlcz0lNUIlMjJMYXVuY2hlc19wcm9kdWN0aW9uJTIyJTJDJTIyTGF1bmNoZXNfYnlfZGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE&x-algolia-application-id=45BWZJ1SGC'`
+
+---
+
+#### Or sorted by date:
 
 `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/Launches_by_date_production?x-algolia-agent=Algolia%20for%20JavaScript%20(4.11.0)%3B%20Browser%20(lite)&x-algolia-api-key=YjVhMWQ1OGEwZTBkNzc3MTk0NzJjODFjMDNjOTM3ODlmZGY0ODdmZTc2OGY3NGY0NGU3ZGIwYTk0ZDJlYWYyZHJlc3RyaWN0SW5kaWNlcz0lNUIlMjJMYXVuY2hlc19wcm9kdWN0aW9uJTIyJTJDJTIyTGF1bmNoZXNfYnlfZGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE&x-algolia-application-id=45BWZJ1SGC`
+
+**CURL**
+
+`curl --location --request GET 'https://45bwzj1sgc-dsn.algolia.net/1/indexes/Launches_by_date_production?x-algolia-agent=Algolia%20for%20JavaScript%20(4.11.0)%3B%20Browser%20(lite)&x-algolia-api-key=YjVhMWQ1OGEwZTBkNzc3MTk0NzJjODFjMDNjOTM3ODlmZGY0ODdmZTc2OGY3NGY0NGU3ZGIwYTk0ZDJlYWYyZHJlc3RyaWN0SW5kaWNlcz0lNUIlMjJMYXVuY2hlc19wcm9kdWN0aW9uJTIyJTJDJTIyTGF1bmNoZXNfYnlfZGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE&x-algolia-application-id=45BWZJ1SGC'`
 
 ### Other filters:
 
@@ -65,21 +75,34 @@ Search for a specific word in endpoint:
 
 `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/{index_name}?query={query}&{default_params}`
 
-- Filter companies by tags:  
-  using: `["company.tags: Education"]`  
-  as url encoded = `%5B%22company.tags%3A%20Education%22%5D`
+**CURL**
 
-  `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/{index_name}?facetFilters={url_encoded_filter}&{default_params}`
-  **Multiple tags:**
-  tag1 AND tag2  
-  using: `["company.tags: Education", "company.tags: Developer Tools"]`  
-  as url encoded = `%5B%22company.tags%3A%20Education%22%2C%20%22company.tags%3A%20Developer%20Tools%22%5D`  
-  Example:
+`curl --location --request GET 'https://45bwzj1sgc-dsn.algolia.net/1/indexes/Launches_by_date_production?query=api&x-algolia-agent=Algolia%20for%20JavaScript%20(4.11.0)%3B%20Browser%20(lite)&x-algolia-api-key=YjVhMWQ1OGEwZTBkNzc3MTk0NzJjODFjMDNjOTM3ODlmZGY0ODdmZTc2OGY3NGY0NGU3ZGIwYTk0ZDJlYWYyZHJlc3RyaWN0SW5kaWNlcz0lNUIlMjJMYXVuY2hlc19wcm9kdWN0aW9uJTIyJTJDJTIyTGF1bmNoZXNfYnlfZGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE&x-algolia-application-id=45BWZJ1SGC'`
 
-  `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/{index_name}?facetFilters={url_encoded_filter}&{default_params}`
+- Filter companies by tags:
 
-  tag1 OR tag2  
-  `[["company.tags: Education", "company.tags: Developer Tools"]]`
+  1. **Single Tags**
+     using: `["company.tags: Education"]`  
+      as url encoded = `%5B%22company.tags%3A%20Education%22%5D`
+     **Example**
+     `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/{index_name}?facetFilters={url_encoded_filter}&{default_params}`  
+      **CURL**
+     `curl --location --request GET 'https://45bwzj1sgc-dsn.algolia.net/1/indexes/Launches_by_date_production?facetFilters=%5B%22company.tags%3A%20Education%22%5D&x-algolia-agent=Algolia%20for%20JavaScript%20(4.11.0)%3B%20Browser%20(lite)&x-algolia-api-key=YjVhMWQ1OGEwZTBkNzc3MTk0NzJjODFjMDNjOTM3ODlmZGY0ODdmZTc2OGY3NGY0NGU3ZGIwYTk0ZDJlYWYyZHJlc3RyaWN0SW5kaWNlcz0lNUIlMjJMYXVuY2hlc19wcm9kdWN0aW9uJTIyJTJDJTIyTGF1bmNoZXNfYnlfZGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE&x-algolia-application-id=45BWZJ1SGC'`
+
+  ***
+
+  2. **Multiple tags**
+     tag1 ==AND== tag2  
+     using: `["company.tags: Education", "company.tags: Developer Tools"]`  
+     as url encoded = `%5B%22company.tags%3A%20Education%22%2C%20%22company.tags%3A%20Developer%20Tools%22%5D`  
+     **Example:**
+     `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/{index_name}?facetFilters={url_encoded_filter}&{default_params}`
+     tag1 ==OR== tag2  
+     `[["company.tags: Education", "company.tags: Developer Tools"]]`
+     **CURL**
+     `curl --location --request GET 'https://45bwzj1sgc-dsn.algolia.net/1/indexes/Launches_by_date_production?facetFilters=%5B%22company.tags%3A%20Education%22%2C%20%22company.tags%3A%20Developer%20Tools%22%5D&x-algolia-agent=Algolia%20for%20JavaScript%20(4.11.0)%3B%20Browser%20(lite)&x-algolia-api-key=YjVhMWQ1OGEwZTBkNzc3MTk0NzJjODFjMDNjOTM3ODlmZGY0ODdmZTc2OGY3NGY0NGU3ZGIwYTk0ZDJlYWYyZHJlc3RyaWN0SW5kaWNlcz0lNUIlMjJMYXVuY2hlc19wcm9kdWN0aW9uJTIyJTJDJTIyTGF1bmNoZXNfYnlfZGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE&x-algolia-application-id=45BWZJ1SGC'`
+
+  ***
 
 - Filter companies by industry:
   difference example: `["company.industry: B2B Software and Services"]`
@@ -130,6 +153,8 @@ Search for a specific word in endpoint:
 
 ```
 
+---
+
 ## GET a specific launch
 
 Format:
@@ -139,6 +164,9 @@ Format:
 **Example**
 
 `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/Launches_by_date_production/post_64209?x-algolia-agent=Algolia%20for%20JavaScript%20(4.11.0)%3B%20Browser%20(lite)&x-algolia-api-key=YjVhMWQ1OGEwZTBkNzc3MTk0NzJjODFjMDNjOTM3ODlmZGY0ODdmZTc2OGY3NGY0NGU3ZGIwYTk0ZDJlYWYyZHJlc3RyaWN0SW5kaWNlcz0lNUIlMjJMYXVuY2hlc19wcm9kdWN0aW9uJTIyJTJDJTIyTGF1bmNoZXNfYnlfZGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE&x-algolia-application-id=45BWZJ1SGC`
+
+**CURL**
+`curl --location --request GET 'https://45bwzj1sgc-dsn.algolia.net/1/indexes/Launches_by_date_production/post_64311?x-algolia-agent=Algolia%20for%20JavaScript%20(4.11.0)%3B%20Browser%20(lite)&x-algolia-api-key=YjVhMWQ1OGEwZTBkNzc3MTk0NzJjODFjMDNjOTM3ODlmZGY0ODdmZTc2OGY3NGY0NGU3ZGIwYTk0ZDJlYWYyZHJlc3RyaWN0SW5kaWNlcz0lNUIlMjJMYXVuY2hlc19wcm9kdWN0aW9uJTIyJTJDJTIyTGF1bmNoZXNfYnlfZGF0ZV9wcm9kdWN0aW9uJTIyJTVEJnRhZ0ZpbHRlcnM9JTVCJTIyeWNkY19wdWJsaWMlMjIlNUQmYW5hbHl0aWNzVGFncz0lNUIlMjJ5Y2RjJTIyJTVE&x-algolia-application-id=45BWZJ1SGC'`
 
 **Most of the time object*ID is `post*{POST_ID}`**
 
