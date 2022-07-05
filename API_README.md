@@ -59,7 +59,8 @@ Or sorted by date:
 | company.batch    |
 | company.industry |
 
-###Examples:  
+### Examples:
+
 Search for a specific word in endpoint:
 
 `GET https://45bwzj1sgc-dsn.algolia.net/1/indexes/{index_name}?query={query}&{default_params}`
@@ -129,7 +130,7 @@ Search for a specific word in endpoint:
 
 ```
 
-## Get a certain launch
+## GET a specific launch
 
 Format:
 
