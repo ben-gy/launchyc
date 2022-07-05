@@ -1,8 +1,9 @@
-import { ActionTypes } from "../action";
+import {ActionTypes} from '../action';
 
 const initialState = {
-  filters: [],
-}
+  filters: ['all'],
+  readHits: [],
+};
 
 export default (state = initialState, action) => {
   try {
@@ -19,13 +20,22 @@ export default (state = initialState, action) => {
           inTraffic: false,
           launches: action.payload,
         };
-      
+
       case ActionTypes.ERROR_LOADING_ALL_LAUNCHES:
         return {
           ...state,
           inTraffic: false,
         };
-    
+
+      case ActionTypes.READ_HIT:
+        return {
+          ...state,
+          readHits:
+            state.readHits.indexOf(action.payload) === -1
+              ? [...state.readHits, action.payload]
+              : state.readHits,
+        };
+
       default:
         return state;
     }

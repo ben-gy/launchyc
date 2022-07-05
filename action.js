@@ -3,7 +3,7 @@ import {upperSnakeCase} from './src/utils';
 import camelCase from 'lodash/camelCase';
 
 let actionNames = normalize(
-  'read post',
+  'read hit',
   ...loadAll(
     'all launches',
   ),
