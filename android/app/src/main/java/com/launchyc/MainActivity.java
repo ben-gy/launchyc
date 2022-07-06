@@ -22,6 +22,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected ReactActivityDelegate createReactActivityDelegate() {
+    SplashScreen.show(this);
     return new MainActivityDelegate(this, getMainComponentName());
   }
 
@@ -36,7 +37,6 @@ public class MainActivity extends ReactActivity {
       // If you opted-in for the New Architecture, we enable the Fabric Renderer.
       reactRootView.setIsFabric(BuildConfig.IS_NEW_ARCHITECTURE_ENABLED);
 
-      // SplashScreen.show(this);
       return reactRootView;
     }
   }
