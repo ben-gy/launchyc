@@ -4,7 +4,7 @@ import {FilterIcon, HeaderLogo} from '../../utils/icons';
 import {styles} from './style';
 import {useSelector, useDispatch} from 'react-redux';
 
-export default Header = () => {
+export default Header = ({setIsFilterVisible}) => {
   const {filters} = useSelector(state => state.launches);
 
   return (
@@ -18,7 +18,7 @@ export default Header = () => {
         </View>
       )}
 
-      <TouchableOpacity style={{padding: 5}}>
+      <TouchableOpacity style={{padding: 5}} onPress={() => setIsFilterVisible(true)}>
         <FilterIcon />
       </TouchableOpacity>
     </View>

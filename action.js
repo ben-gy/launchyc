@@ -4,6 +4,8 @@ import camelCase from 'lodash/camelCase';
 
 let actionNames = normalize(
   'read hit',
+  'apply filter',
+  'clear filter',
   ...loadAll(
     'all launches',
   ),

@@ -1,7 +1,7 @@
 import {ActionTypes} from '../action';
 
 const initialState = {
-  filters: ['all'],
+  filters: [],
   readHits: [],
 };
 
@@ -35,6 +35,18 @@ export default (state = initialState, action) => {
               ? [...state.readHits, action.payload]
               : state.readHits,
         };
+
+      case ActionTypes.CLEAR_FILTER:
+        return {
+          ...state,
+          filters: [],
+        };
+
+      case ActionTypes.APPLY_FILTER:
+        return {
+          ...state,
+          filters: [action.payload],
+        }
 
       default:
         return state;

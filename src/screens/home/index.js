@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -14,8 +14,11 @@ import {Actions} from '../../../action';
 import Header from '../../components/header';
 import {styles} from './style';
 import {getDaysDiff} from '../../utils';
+import Modal from 'react-native-modal';
+import tags from '../../../api_data/tags.json';
 
 export default Home = () => {
+  const [isFilterVisible, setIsFilterVisible] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -24,16 +27,38 @@ export default Home = () => {
   );
 
   useEffect(() => {
-    dispatch(Actions.getAllLaunches());
-  }, []);
+    dispatch(
+      Actions.getAllLaunches(
+        filters.length > 0
+          ? {facetFilters: [`company.tags: ${filters[0]}`]}
+          : null,
+      ),
+    );
+  }, [filters]);
 
   const onRefresh = () => {
-    dispatch(Actions.getAllLaunches());
+    dispatch(
+      Actions.getAllLaunches(
+        filters.length > 0
+          ? {facetFilters: [`company.tags: ${filters[0]}`]}
+          : null,
+      ),
+    );
+  };
+
+  const clearFilter = () => {
+    dispatch(Actions.clearFilter());
+    setIsFilterVisible(false);
+  };
+
+  const applyFilter = tag => {
+    dispatch(Actions.applyFilter(tag));
+    setIsFilterVisible(false);
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header setIsFilterVisible={setIsFilterVisible} />
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={inTraffic} onRefresh={onRefresh} />
@@ -69,6 +94,45 @@ export default Home = () => {
             ))}
         </View>
       </ScrollView>
+
+      <Modal
+        isVisible={isFilterVisible}
+        onBackdropPress={() => setIsFilterVisible(false)}
+        onBackButtonPress={() => setIsFilterVisible(false)}
+        onSwipeComplete={() => setIsFilterVisible(false)}
+        swipeDirection="down"
+        style={styles.modal}>
+        <View style={styles.modalContainer}>
+          <View style={styles.tagsContainer}>
+            {Object.entries(tags).map(([tag, number]) => {
+              if (number > 2)
+                // show only tag that has 3+ items
+                return (
+                  <TouchableOpacity
+                    key={tag}
+                    style={{
+                      ...styles.tag,
+                      backgroundColor: filters.includes(tag)
+                        ? '#F26522'
+                        : '#DFDFDF',
+                    }}
+                    onPress={() => applyFilter(tag)}>
+                    <Text
+                      style={{
+                        ...styles.tagText,
+                        color: filters.includes(tag) ? 'white' : 'black',
+                      }}>
+                      {tag}
+                    </Text>
+                  </TouchableOpacity>
+                );
+            })}
+          </View>
+          <TouchableOpacity style={styles.clear} onPress={() => clearFilter()}>
+            <Text style={styles.clearText}>CLEAR FILTERS</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
